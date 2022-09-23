@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_series_list_webandroidios/data/models/series_list.dart';
+import 'package:my_series_list_webandroidios/presentation/pages/details.dart';
 import 'package:provider/provider.dart';
 
 // TODO: get series list from ext. api
@@ -43,6 +44,12 @@ class ItemTile extends StatelessWidget {
         leading: CircleAvatar(
           backgroundColor:
               Colors.primaries[itemNo + 1 % Colors.primaries.length],
+          child: TextButton(
+            child: const Text('push me for details'),
+            onPressed: () {
+              Navigator.pushNamed(context, DetailsPage.routeName);
+            },
+          ),
         ),
         title: Text(
           itemName,
