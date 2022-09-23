@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_series_list_webandroidios/data/models/series_list.dart';
+import 'package:my_series_list_webandroidios/presentation/pages/details.dart';
+import 'package:my_series_list_webandroidios/presentation/pages/search.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,6 +12,16 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        actions: <Widget>[
+          TextButton.icon(
+            style: TextButton.styleFrom(foregroundColor: Colors.white),
+            onPressed: () {
+              Navigator.pushNamed(context, SearchPage.routeName);
+            },
+            icon: const Icon(Icons.search_outlined),
+            label: const Text('Search'),
+          ),
+        ],
       ),
       body: Consumer<SeriesList>(
         builder: (context, value, child) => ListView.builder(
@@ -39,12 +51,12 @@ class FavoriteItemTile extends StatelessWidget {
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: Colors.primaries[itemNo % Colors.primaries.length],
-          // child: TextButton(
-          //   child: const Text('push me for details'),
-          //   onPressed: () {
-          //     Navigator.pushNamed(context, DetailsPage.routeName);
-          //   },
-          // ),
+          child: TextButton(
+            child: const Text('push me for details'),
+            onPressed: () {
+              Navigator.pushNamed(context, DetailsPage.routeName);
+            },
+          ),
         ),
         title: Text(
           itemName,
