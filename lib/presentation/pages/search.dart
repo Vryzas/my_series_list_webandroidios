@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_series_list_webandroidios/data/models/series_list.dart';
 import 'package:my_series_list_webandroidios/presentation/pages/details.dart';
+import 'package:my_series_list_webandroidios/presentation/pages/home.dart';
 import 'package:provider/provider.dart';
 
 // TODO: get series list from ext. api
@@ -14,6 +15,16 @@ class SearchPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Search'),
+        actions: <Widget>[
+          TextButton.icon(
+            style: TextButton.styleFrom(foregroundColor: Colors.white),
+            onPressed: () {
+              Navigator.pushNamed(context, HomePage.routeName);
+            },
+            icon: const Icon(Icons.home_outlined),
+            label: const Text('Home'),
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: entries.length,
